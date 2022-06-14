@@ -5,7 +5,7 @@ use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 $dataProvider = new ActiveDataProvider([
-    'query' => $model->getProjects(),
+    'query' => $model->getTeamMembers(),
     'pagination' => [
         'pageSize' => 3,
     ],
@@ -36,7 +36,7 @@ echo ListView::widget([
     'tag' => 'div',
     ],
     'summary' => 'Показаны записи <strong>{begin}-{end}</strong> из <strong>{totalCount}</strong>.',
-    'layout' => '{summary}<div class="row">{items}</div>{pager}',
+    'layout' => '{summary}<div class="card-deck">{items}</div>{pager}',
     'pager' => ['class' => \yii\bootstrap4\LinkPager::class],
 ]);
 Pjax::end(); 

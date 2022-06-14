@@ -25,11 +25,6 @@ class UserController extends \yii\web\Controller
         return $this->redirect('/projects/index');
     }
 
-    public function actionProjects()
-    {
-        return $this->render('projects');
-    }
-
     public function actionUpdateUser()
     {
         

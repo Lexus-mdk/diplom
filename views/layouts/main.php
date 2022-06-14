@@ -38,10 +38,10 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'Проекты', 'url' => ['/projects/index']],
-            ['label' => 'Конкурсы', 'url' => ['/site/contact']],
-            ['label' => 'Работа', 'url' => ['/site/contact']],
+            // ['label' => 'Конкурсы', 'url' => ['/site/contact']],
+            // ['label' => 'Работа', 'url' => ['/site/contact']],
             ('<div class="dropdown btn-group"><button id="w1-button" class="btn nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О нас</button>
 
             <div id="w2" class="dropdown-menu"><a class="dropdown-item" href="/site/about">О проекте</a>
@@ -89,8 +89,8 @@ AppAsset::register($this);
 
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
-        <p class="float-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
+        <p class="float-left">&copy; Студенческие проекты <?= date('Y') ?></p>
+        <p class="float-right"><?= '' ?></p>
     </div>
 </footer>
 

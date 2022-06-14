@@ -18,10 +18,9 @@ use Yii;
  * @property int $subscription
  * @property string $status
  * @property string $date
- * @property int $creator_id
  *
- * @property User $creator
  * @property FindingTeamMembers[] $findingTeamMembers
+ * @property Likes[] $likes
  * @property TeamMembers[] $teamMembers
  */
 class Projects extends \yii\db\ActiveRecord
@@ -35,10 +34,21 @@ class Projects extends \yii\db\ActiveRecord
         // public $finding;
         // public $like;
         // public $subscription;
-        // public $status;
-        // public $date;
-        // public $creator_id;
-    
+        public $arr = [
+            0=>'Модерация',
+            1=>'Допущен',
+            2=>'Требуются исправления',
+            3=>'Заблокирован'
+        ];
+        public $color = [
+            0=>'blue',
+            1=>'green',
+            2=>'orange',
+            3=>'red'
+        ];
+        public $post;
+        public $moder;
+
     /**
      * {@inheritdoc}
      */
@@ -53,12 +63,11 @@ class Projects extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'st_description', 'description', 'status', 'date', 'creator_id'], 'required'],
+            [['name', 'st_description', 'description', 'status', 'date', 'post'], 'required'],
             [['links', 'date'], 'safe'],
-            [['like', 'subscription', 'creator_id'], 'integer'],
+            [['like'], 'integer'],
             [['name', 'st_description', 'status'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 2000],
-            [['creator_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['creator_id' => 'user_id']],
         ];
     }
 
@@ -75,21 +84,23 @@ class Projects extends \yii\db\ActiveRecord
             'links' => 'Ссылки',
             'team_members_count' => 'Количество участников',
             'like' => 'Нравится',
-            'subscription' => 'Подписки',
             'status' => 'Статус',
             'date' => 'Дата создания',
-            'creator_id' => 'Идентификатор создателя',
+            'post' => 'Ваша должность в проекте',
+            'm_message' => 'Сообщение модератора',
+            'moderation' => 'Статус модерации'
         ];
     }
 
+
     /**
-     * Gets query for [[Creator]].
+     * Gets query for [[Likes]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCreator()
+    public function getLikes()
     {
-        return $this->hasOne(User::class, ['user_id' => 'creator_id']);
+        return $this->hasMany(Likes::class, ['project_id' => 'project_id']);
     }
 
     /**

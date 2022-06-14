@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Projects;
 use app\models\RegistrationForm;
 use app\models\User;
 
@@ -63,7 +64,10 @@ class SiteController extends appController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new Projects();
+        return $this->render('index', [
+            'model'=> $model,
+        ]);
     }
 
 
@@ -113,6 +117,10 @@ class SiteController extends appController
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            if (Yii::$app->user->identity->is_admin == 1)
+            {
+                return $this->redirect('/admin/site/index');
+            }
             return $this->goBack();
         }
 

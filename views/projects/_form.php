@@ -18,12 +18,15 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'links')->textInput(['doubleEncode'=>true]) ?>
 
+
+    <?= $form->field($model, 'links')->textarea(['doubleEncode'=>true]) ?>
+
+    <?= $form->field($model, 'post')->textInput(['maxlength' => true, ]) ?>
 
     <?= $form->field($model, 'status')->dropDownList([
-            'Прототип/идея' => 'Прототип/идея',            
-            'Поиск команды' => 'Поиск команды',
+            'Идея/задумка' => 'Идея/задумка',            
+            'Набор в команду' => 'Набор в команду',
             'Сбор средств' => 'Сбор средств',
             'В разработке'=> 'В разработке',
             'Завершен'=>'Завершен'

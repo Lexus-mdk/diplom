@@ -18,8 +18,8 @@ use yii\db\ActiveRecord;
  * @property string $organisation
  * @property string $role
  * @property string $password
- *
- * @property Projects[] $projects
+ * 
+ * @property Likes[] $likes
  * @property RequestToTeam[] $requestToTeams
  * @property TeamMembers[] $teamMembers
  */
@@ -27,12 +27,12 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
     public $authKey;
     public $accessToken;
-    public $password_repeat;
+    public $password_repeat;    
 
     public function rules()
     {
         return [
-            [['username', 'email', 'name', 'surename', 'patronymic', 'gender', 'date_of_birth', 'organisation', 'role', 'password'], 'required'],
+            [['username', 'email', 'name', 'surename', 'gender', 'date_of_birth', 'organisation', 'role', 'password'], 'required'],
             [['date_of_birth'], 'safe'],
             [['username'], 'string', 'max' => 15],
             [['email', 'organisation', 'role', 'password'], 'string', 'max' => 255],
@@ -40,6 +40,26 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             [['gender'], 'string', 'max' => 10],
         ];
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'rules' => 'Соглашаюсь с условиями регистрации',
+            'username' => 'Логин',
+            'email' => 'Почта',
+            'name' => 'Имя',
+            'surename' => 'Фамилия',
+            'patronymic' => 'Отчество (необязательное поле)',
+            'gender' => 'Пол',
+            'date_of_birth' => 'Дата рождения',
+            'organisation' => 'Образовательное учреждение/организация',
+            'role'=>'Тип пользователя'
+        ];
+    }
+
 
     /**
      * Gets query for [[RequestToTeams]].
@@ -52,13 +72,13 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
-     * Gets query for [[Projects]].
+     * Gets query for [[Likes]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProjects()
+    public function getLikes()
     {
-        return $this->hasMany(Projects::class, ['creator_id' => 'user_id']);
+        return $this->hasMany(Likes::class, ['user_id' => 'user_id']);
     }
 
     /**

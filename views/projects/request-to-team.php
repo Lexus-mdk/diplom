@@ -9,7 +9,7 @@ use yii\bootstrap4\ActiveForm;
 ?>
 <div class="projects-request-to-team">
     <h2>Отклик на вакансию</h2>
-    <p>Должность - Дизайнер</p>
+    <p>Должность - <?= $vacancy->post ?></p>
     <?php $form = ActiveForm::begin(); ?>
         <?= $form->field($model, 'user_id', ['template'=>'{input}'])->hiddenInput() ?>
         <?= $form->field($model, 'vacancy_id', ['template'=>'{input}'])->hiddenInput() ?>

@@ -8,11 +8,36 @@ use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
 use yii\captcha\Captcha;
 
-$this->title = 'Contact';
+$this->title = 'Контакты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<h2>Страница находится в разработке</h2>
+<!-- <h2>Страница находится в разработке</h2> -->
+<h1><?= Html::encode($this->title) ?></h1>
+<p>Если у вас появились проблемы с работой сайта, то, пожалуйста, напишите на почту pochta@pochta.pochta и приложите скриншоты с проблемой.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <div class="site-contact">
     <h1><?= Html::encode($this->title) ?></h1>

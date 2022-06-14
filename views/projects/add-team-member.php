@@ -8,6 +8,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form ActiveForm */
 ?>
 <div class="projects-add-team-members">
+<h2>Добавление участника в команду </h2>
 
     <?php $form = ActiveForm::begin(); ?>
 

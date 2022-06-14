@@ -51,10 +51,25 @@ class FindingTeamMembers extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'project_id' => 'Project ID',
-            'description' => 'Description',
-            'post' => 'Post',
+            'project_id' => '',
+            'description' => 'Описание',
+            'post' => 'Должность',
         ];
+    }
+
+
+    public function isInTeam()
+    {
+        $member = TeamMembers::findOne(['user_id'=>\Yii::$app->user->identity->user_id, 'project_id'=>$this->project_id]);
+        if (!$member)
+        {
+            $vac = RequestToTeam::findOne(['vacancy_id'=>$this->id, 'user_id'=>\Yii::$app->user->identity->user_id]);
+            if (!$vac)
+            {
+                return True;
+            }
+        }
+        return False;
     }
 
     /**

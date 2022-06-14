@@ -22,19 +22,12 @@ Pjax::begin(['enablePushState' => false, 'timeout' => 5000]);
         <?= $form->field($model, 'surename') ?>
         <?= $form->field($model, 'patronymic') ?>
         <?= $form->field($model, 'gender')->radioList([
-            'Женщина'=>'Женщина',
-            'Мужчина'=>'Мужчина'
+            'Женский'=>'Женский',
+            'Мужской'=>'Мужской'
         ]) ?>
-        <?= $form->field($model, 'date_of_birth')->widget(
-            \yii\widgets\MaskedInput::class, [
-                'mask' => "y-2-1",
-                'clientOptions' => [
-                    'alias' => 'datetime',
-                    "placeholder" => "yyyy-mm-dd",
-                    "separator" => "-"
-                ]
-            ]
-        ) ?>
+     
+        <?= $form->field($model, 'date_of_birth')->textInput(['type' => 'date', 'maxDate' => '-3y',]); ?>
+      
         <?= $form->field($model, 'role')->radioList([
             'Студент'=>'Студент',
             'Физ/юр лицо'=>'Физ/юр лицо'

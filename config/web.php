@@ -4,6 +4,11 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+        ],
+    ],
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -13,6 +18,12 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        // 'view' => [
+        //     'theme' => [
+        //         'pathMap' => ['@app/views' => '@app/themes/adminLTE'],
+        //         'baseUrl' => '@web/../themes/adminLTE',
+        //     ],
+        // ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'LbsKdnwYTckSULpWb-2CE4x9-ceBMH0U',

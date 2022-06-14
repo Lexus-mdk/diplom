@@ -8,15 +8,15 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form ActiveForm */
 ?>
 <div class="projects-find-team-members">
+    <h2>Создание вакансии на вступление в команду </h2>
 
     <?php $form = ActiveForm::begin(); ?>
-
-        <?= $form->field($model, 'project_id') ?>
-        <?= $form->field($model, 'description') ?>
+        <?= $form->field($model, 'project_id')->hiddenInput() ?>
+        <?= $form->field($model, 'description')->textarea() ?>
         <?= $form->field($model, 'post') ?>
     
         <div class="form-group">
-            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 

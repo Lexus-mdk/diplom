@@ -20,8 +20,8 @@ Pjax::begin(['enablePushState' => false, 'timeout' => 5000]);
         <?= $form->field($model, 'surename') ?>
         <?= $form->field($model, 'patronymic') ?>
         <?= $form->field($model, 'gender')->radioList([
-            'Женщина'=>'Женщина',
-            'Мужчина'=>'Мужчина'
+            'Женский'=>'Женский',
+            'Мужской'=>'Мужской'
         ]) ?>
         <?= $form->field($model, 'date_of_birth')->widget(
             \yii\widgets\MaskedInput::class, [
@@ -38,8 +38,8 @@ Pjax::begin(['enablePushState' => false, 'timeout' => 5000]);
             'Физ/юр лицо'=>'Физ/юр лицо'
         ]) ?>
         <?= $form->field($model, 'organisation') ?>
-        <?= $form->field($model, 'password')->input('password') ?>
-        <?= $form->field($model, 'password_repeat')->input('password') ?>
+        <?= $form->field($model, 'password')->input('password')->label('Пароль') ?>
+        <?= $form->field($model, 'password_repeat')->input('password')->label('Повторите пароль')  ?>
     
         <div class="form-group">
             <?= Html::submitButton('Сохранить изменения', ['class' => 'btn btn-primary']) ?>

@@ -52,8 +52,8 @@ class TeamMembers extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'project_id' => 'Project ID',
-            'user_id' => 'User ID',
-            'post' => 'Post',
+            'user_id' => 'Username (вы можете найти его на странице пользователя, под его полным именем)',
+            'post' => 'Должность',
         ];
     }
 

@@ -19,7 +19,8 @@ use yii\bootstrap4\Html;
         }  ?>
     </p>
     <div class="align-self-end">
-    <? echo Html::a(Html::encode("Подробнее"), ['view', 'id' => $model->project_id], ['class'=>'btn btn-primary', 'data-pjax'=>0]); ?>
+    <? echo Html::a(Html::encode("Подробнее"), ['projects/view', 'id' => $model->project_id], ['class'=>'btn btn-primary', 'data-pjax'=>0]); ?>
     <!-- <a href="#" class="btn btn-primary">Переход куда-нибудь</a> -->
+    
     </div>
   </div>
